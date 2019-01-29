@@ -28,4 +28,29 @@ public class Product
         this.model = "";
         this.stock = stock;
     }
+    
+    public String getBrandName()
+    {
+        return brandName;
+    }
+    
+    public int getStock()
+    {
+        return stock;
+    }
+    
+    public int getPrice()
+    {
+        return price;
+    }
+    
+    public int getSize()
+    {
+        return size;
+    }
+    
+    public String getColor()
+    {
+        return color;
+    }
 }

@@ -36,7 +36,7 @@ public class JavaShoeDatabase {
         
         System.out.println("Välj en Produkt att beställa");
         System.out.println("##");
-        pc.getProducts();
+        pc.printProducts();
         System.out.println("##");
         
     }

@@ -1,7 +1,7 @@
 package Controller;
 
-import Models.Customer;
 import Models.Product;
+import View.ProductView;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -15,13 +15,6 @@ import java.util.List;
  */
 public class ProductController 
 {
-    private String brandName;
-    private String color;
-    private int size;
-    private int price;
-    private String stock;
-   
-    
     public ProductController(){}
     
     public List<Product> getProducts() throws SQLException
@@ -42,5 +35,11 @@ public class ProductController
         }
         
         return products;
+    }
+
+    public void printProducts() throws SQLException
+    {
+        for (Product temp : getProducts()) 
+            new ProductView().printProduct(temp.getBrandName(), temp.getColor(), temp.getSize(), temp.getPrice(), temp.getStock() > 0 ? "I lager" : "Slut");
     }
 }

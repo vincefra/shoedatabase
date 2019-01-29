@@ -15,6 +15,6 @@ public class ProductView {
     
     public void printProduct(String brandName, String color, int size, int price, String stock)
     {
-        System.out.println("Märke:" + brandName + " - Färg:" + color + " - Storlek:" + size + " - Pris:" + price + " - Status:" + stock);
+        System.out.println("- Märke:" + brandName + " - Färg:" + color + " - Storlek:" + size + " - Pris:" + price + " - Status:" + stock);
     }
 }
