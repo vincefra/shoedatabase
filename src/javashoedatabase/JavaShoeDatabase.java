@@ -29,7 +29,7 @@ public class JavaShoeDatabase {
         ProductController pc = new ProductController();
         
         List<Customer> customers = cc.getCustomers();
-        List<Product> products = pc.getProducts();
+        List<Product> products = pc.getProducts(true);
 
         start(cc, pc);
         
@@ -49,7 +49,6 @@ public class JavaShoeDatabase {
             Product product = pickProduct(pc);
 
             System.out.println("All done");
-            
         }
     }
     
@@ -126,7 +125,7 @@ public class JavaShoeDatabase {
     {
         System.out.println("- Produkter -");
         System.out.println("##");
-        pc.printProducts();
+        pc.printProducts(true);
         System.out.println("##");
         System.out.println("Välj en product genom att skriva in märke");
     }

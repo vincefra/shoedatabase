@@ -19,17 +19,15 @@ public class ProductController
     
     public Product existProduct(String brand, String color, int size) throws SQLException
     {
-        for (Product p : getProducts()) 
+        for (Product p : getProducts(true)) 
             if (p.getBrandName().equalsIgnoreCase(brand))
                 if (p.getColor().equalsIgnoreCase(color))
                     if (p.getSize() == size)
                         return p;
-        
         return null;
     }
     
-    
-    public List<Product> getProducts() throws SQLException
+    public List<Product> getProducts(boolean onlystock) throws SQLException
     {
         List<Product> products = new ArrayList<>();
         
@@ -39,7 +37,14 @@ public class ProductController
             ResultSet rs = stmt.executeQuery("SELECT product.id, product.brandId, product.color, product.size, product.price, product.stock, brand.name FROM Product inner join brand on brand.id = product.brandId ORDER by brand.name ASC");
 
             while (rs.next())
+            {
+                if (onlystock)
+                    if (rs.getInt(6) == 0)
+                        continue;
+                
                 products.add(new Product(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getInt(4), rs.getInt(5), rs.getInt(6), rs.getString(7)));
+            }
+            
         }
         catch (Exception e)
         {
@@ -48,8 +53,8 @@ public class ProductController
         return products;
     }
 
-    public void printProducts() throws SQLException
+    public void printProducts(boolean onlystock) throws SQLException
     {
-        getProducts().forEach(p -> new ProductView().printProduct(p.getBrandName(), p.getColor(), p.getSize(), p.getPrice(), p.getStock() > 0 ? "I lager" : "Slut"));
+        getProducts(onlystock).forEach(p -> new ProductView().printProduct(p.getBrandName(), p.getColor(), p.getSize(), p.getPrice(), p.getStock() > 0 ? "I lager" : "Slut"));
     }
 }
