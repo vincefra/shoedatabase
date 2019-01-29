@@ -5,6 +5,8 @@
  */
 package Models;
 
+import java.sql.Timestamp;
+
 /**
  *
  * @author work
@@ -13,13 +15,13 @@ public class Order
 {
     private int id;
     private int customerId;
-    private long created;
-    private long lastupdate;
+    private Timestamp created;
+    private Timestamp lastupdate;
     private int delivered;
     
     public Order(){}
     
-    public Order(int id,long created, long lastupdate, int customerId, int delivered)
+    public Order(int id, int customerId,Timestamp created, Timestamp lastupdate, int delivered)
     {
         this.id = id;
         this.customerId = customerId;
@@ -27,4 +29,16 @@ public class Order
         this.lastupdate = lastupdate;
         this.delivered = delivered;
     }
+    
+    public int getOrderId()
+    {
+        return id;
+    }
+    
+    public Timestamp getCreated()
+    {
+        return created;
+    }
+    
+    
 }

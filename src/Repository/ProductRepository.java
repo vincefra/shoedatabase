@@ -1,4 +1,4 @@
-package Controller;
+package Repository;
 
 import Models.Product;
 import View.ProductView;
@@ -13,9 +13,9 @@ import java.util.List;
  *
  * @author work
  */
-public class ProductController 
+public class ProductRepository 
 {
-    public ProductController(){}
+    public ProductRepository(){}
     
     public Product existProduct(String brand, String color, int size) throws SQLException
     {

@@ -5,8 +5,8 @@
  */
 package javashoedatabase;
 
-import Controller.CustomerController;
-import Controller.ProductController;
+import Repository.CustomerRepository;
+import Repository.ProductRepository;
 import Models.Customer;
 import Models.Product;
 import java.sql.SQLException;
@@ -25,11 +25,12 @@ public class JavaShoeDatabase {
      */
     public static void main(String[] args) throws SQLException 
     {
-        CustomerController cc = new CustomerController();
-        ProductController pc = new ProductController();
+        CustomerRepository cc = new CustomerRepository();
+        ProductRepository pc = new ProductRepository();
         
         List<Customer> customers = cc.getCustomers();
         List<Product> products = pc.getProducts(true);
+        List<Order> products 
 
         start(cc, pc);
         
@@ -41,7 +42,7 @@ public class JavaShoeDatabase {
         
     }
     
-    public static void start(CustomerController cc, ProductController pc) throws SQLException
+    public static void start(CustomerRepository cc, ProductRepository pc) throws SQLException
     {
         while (true)
         {
@@ -52,7 +53,7 @@ public class JavaShoeDatabase {
         }
     }
     
-    public static Customer pickCustomer(CustomerController cc) throws SQLException
+    public static Customer pickCustomer(CustomerRepository cc) throws SQLException
     {
         Customer customer;
         
@@ -70,7 +71,7 @@ public class JavaShoeDatabase {
         return customer;
     }
     
-    public static Product pickProduct(ProductController pc) throws SQLException
+    public static Product pickProduct(ProductRepository pc) throws SQLException
     {
         Product product;
         
@@ -112,7 +113,7 @@ public class JavaShoeDatabase {
         return value;
     }
     
-    public static void printCustomers(CustomerController cc) throws SQLException
+    public static void printCustomers(CustomerRepository cc) throws SQLException
     {
         System.out.println("- Kunder -");
         System.out.println("##");
@@ -121,7 +122,7 @@ public class JavaShoeDatabase {
         System.out.println("Välj en kund genom att skriva in förnamn");
     }
     
-    public static void printProducts(ProductController pc) throws SQLException
+    public static void printProducts(ProductRepository pc) throws SQLException
     {
         System.out.println("- Produkter -");
         System.out.println("##");

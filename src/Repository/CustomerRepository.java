@@ -1,4 +1,4 @@
-package Controller;
+package Repository;
 
 import Models.Customer;
 import View.CustomerView;
@@ -14,9 +14,9 @@ import java.util.List;
  * @author work
  */
 
-public class CustomerController 
+public class CustomerRepository 
 {
-    public CustomerController() throws SQLException
+    public CustomerRepository() throws SQLException
     {
 
     }
