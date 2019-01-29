@@ -21,6 +21,15 @@ public class CustomerController
 
     }
     
+    public Customer getCustomer(String name) throws SQLException
+    {
+        for (Customer c : getCustomers()) 
+            if (c.getname().equalsIgnoreCase(name))
+                return c;
+        
+        return null;
+    }
+    
     public List<Customer> getCustomers() throws SQLException
     {
         List<Customer> customers = new ArrayList<>();
@@ -43,7 +52,6 @@ public class CustomerController
     
     public void printCustomers() throws SQLException
     {
-        for (Customer temp : getCustomers()) 
-            new CustomerView().printCustomer(temp.getname(), temp.getLastname());
+        getCustomers().forEach(c -> new CustomerView().printCustomer(c.getname(), c.getLastname()));
     }
 }

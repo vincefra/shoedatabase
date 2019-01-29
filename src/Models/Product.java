@@ -53,4 +53,19 @@ public class Product
     {
         return color;
     }
+    
+    public void setBrandName(String brandName)
+    {
+        this.brandName = brandName;
+    }
+    
+    public void setColor(String color)
+    {
+        this.color = color;
+    }
+    
+    public void setSize(int size)
+    {
+        this.size = size;
+    }
 }
