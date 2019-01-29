@@ -31,18 +31,13 @@ public class CustomerController
             ResultSet rs = stmt.executeQuery("SELECT * FROM Customer");
 
             while (rs.next())
-            {
-                int id = rs.getInt("id");
-                String name = rs.getString("name");
-                String lastname = rs.getString("lastname");
-                customers.add(new Customer(id, name, lastname));
-            }
+                customers.add(
+                        new Customer(rs.getInt("id"), rs.getString("name"), rs.getString("lastname")));
         }
         catch (Exception e)
         {
             e.printStackTrace();
         }
-        
         return customers;
     }
     

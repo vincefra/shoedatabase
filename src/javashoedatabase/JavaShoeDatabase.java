@@ -6,6 +6,7 @@
 package javashoedatabase;
 
 import Controller.CustomerController;
+import Controller.ProductController;
 import Database.Database;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -23,12 +24,19 @@ public class JavaShoeDatabase {
     public static void main(String[] args) throws SQLException 
     {
         CustomerController cc = new CustomerController();
+        ProductController pc = new ProductController();
+        
         Connection con = Database.getConnection();
         con.close();
         
         System.out.println("Välj en användare genom att skriva in hens Namn och Efternamn");
         System.out.println("##");
         cc.printCustomers();
+        System.out.println("##");
+        
+        System.out.println("Välj en Produkt att beställa");
+        System.out.println("##");
+        pc.getProducts();
         System.out.println("##");
         
     }
