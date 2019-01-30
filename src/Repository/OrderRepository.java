@@ -84,6 +84,6 @@ public class OrderRepository
 
     public void printOrdersMap(int customerId) throws SQLException
     {
-        getOrders(customerId).stream().map(Order::getOrderId).collect(toList());
+        System.out.println(getOrders(customerId).stream().map(Order::getOrderId).collect(toList()));
     }
 }
