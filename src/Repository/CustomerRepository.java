@@ -27,7 +27,7 @@ public class CustomerRepository
             if (c.getname().equalsIgnoreCase(name))
                 return c;
         
-        return null;
+        return null;  
     }
     
     public List<Customer> getCustomers() throws SQLException

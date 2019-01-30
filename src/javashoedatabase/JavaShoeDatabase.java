@@ -1,14 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package javashoedatabase;
 
 import Repository.CustomerRepository;
 import Repository.ProductRepository;
 import Models.Customer;
+import Models.Order;
 import Models.Product;
+import Repository.OrderRepository;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Scanner;
@@ -17,40 +14,47 @@ import java.util.Scanner;
  *
  * @author work
  */
-public class JavaShoeDatabase {
+public class JavaShoeDatabase 
+{
 
-    /**
-     * @param args the command line arguments
-     * @throws java.sql.SQLException
-     */
+    static Customer customer;
+    static Product product;
+    
+    
     public static void main(String[] args) throws SQLException 
     {
-        CustomerRepository cc = new CustomerRepository();
-        ProductRepository pc = new ProductRepository();
+        CustomerRepository cr = new CustomerRepository();
+        ProductRepository pr = new ProductRepository();
+        OrderRepository or = new OrderRepository();
         
-        List<Customer> customers = cc.getCustomers();
-        List<Product> products = pc.getProducts(true);
-        List<Order> products 
-
-        start(cc, pc);
-        
-        /*
-        System.out.println("Välj en Produkt att beställa");
-        System.out.println("##");
-        pc.printProducts();
-        System.out.println("##");*/
-        
+        start(cr, pr, or);
     }
     
-    public static void start(CustomerRepository cc, ProductRepository pc) throws SQLException
+    public static void start(CustomerRepository cc, ProductRepository pc, OrderRepository or) throws SQLException
     {
         while (true)
         {
-            Customer customer = pickCustomer(cc);
-            Product product = pickProduct(pc);
+            customer = pickCustomer(cc);
+            product = pickProduct(pc);
+            pickOrder(or);
 
             System.out.println("All done");
         }
+    }
+    
+    public static void pickOrder(OrderRepository or) throws SQLException
+    {
+        Order order;
+        
+        printOrders(or, customer.getId());
+ 
+        int pick;
+
+        pick = getInputInt("skriv 0 för ny order annars välj ordernummer ovanför!");
+        
+        or.AddToCart(pick, customer.getId(), product.getId());
+        
+        while(true){}
     }
     
     public static Customer pickCustomer(CustomerRepository cc) throws SQLException
@@ -129,5 +133,13 @@ public class JavaShoeDatabase {
         pc.printProducts(true);
         System.out.println("##");
         System.out.println("Välj en product genom att skriva in märke");
+    }
+    
+    public static void printOrders(OrderRepository or, int customerId) throws SQLException
+    {
+        System.out.println("- Ordrar -");
+        System.out.println("##");
+        or.printOrders(customerId);
+        System.out.println("##");
     }
 }

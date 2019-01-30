@@ -44,6 +44,11 @@ public class Product
         return price;
     }
     
+    public int getId()
+    {
+        return id;
+    }
+    
     public int getSize()
     {
         return size;
